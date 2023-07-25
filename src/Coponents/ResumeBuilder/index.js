@@ -15,7 +15,7 @@ function ResumeBuilder(){
     const printRef = useRef();
 
     const downloadPdfDocument = async () => {
-        savePDF(printRef.current, { paperSize:  "A4" });
+        savePDF(printRef.current, { paperSize:  "A4" , fileName:`${Location.state.Name} Encored Resume`});
     };
 
     return(

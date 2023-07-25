@@ -25,7 +25,15 @@ function LandingPage() {
         alert("Incomplete Form");
       }
     else{
-      Navigate('/ResumeDownload' ,
+      if( Mobile.length !== 10){
+        alert("Enter a valid 10 digit Mobile Number")
+      }
+      else{
+        if( !Email.includes("@") ){
+          alert(" Enter a valid Email ID ")
+        }
+        else{
+          Navigate('/ResumeDownload' ,
         {
           state:{
           Name:Name,
@@ -37,8 +45,9 @@ function LandingPage() {
           Education:Education,
           Skills:Skills,
           Certifications:Certifications
-        }}
-      )
+        }})
+        }
+      }
     }
   }
 
