@@ -1,0 +1,40 @@
+.intextfont{
+    font-family: sans-serif;
+    padding: 16px;
+    text-align: left;
+}
+
+.PopupResumeBg{
+    background-color: white;
+    min-height: 7in;
+    max-width: 5in;
+    padding: 16px 32px;
+    border-radius: 32px;
+    margin: 0.5% auto;
+    position: relative;
+}
+
+.NameDiv{
+    border-left: 12.8px solid black;
+    margin-bottom: 1rem;
+    padding-left: 3.2px;
+}
+
+p{
+    margin: 0.1rem;
+}
+
+.horline{
+    border-top: 1px solid rgb(0, 0, 0);
+    padding: 6.4px;
+    text-transform: capitalize;
+}
+.padit{
+    padding-left: 16px;
+}
+.bolded{
+    text-decoration: solid;
+    font-size: large;
+    margin-top: 16px;
+    text-transform: uppercase;
+}

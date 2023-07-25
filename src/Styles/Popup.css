@@ -1,0 +1,46 @@
+.PopupBase{
+    position: fixed;
+    min-height: 100vh;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background-color: rgba(0,0,0,0.5);
+    text-align: center;
+    justify-content: center;
+}
+
+.ButtonBasics{
+    background-color: transparent;
+    border: none;
+    outline: none;
+    margin: 0.5rem auto;
+    margin-bottom: 0.1rem;
+    position: relative;
+    font-family: sans-serif;
+}
+
+.Download{
+    right: 12%;
+    background-color: #a7791c;
+    color: white;
+    font-size: large;
+    padding: 0.1rem 1rem;
+    border-radius: 2rem;
+}
+
+.Close{
+    left: 12%;
+    color: #a7791c;
+    font-size: x-large;
+}
+
+.PopupCenterer{
+    text-align: center;
+}
+
+@media only screen and (max-width: 450px) {
+    .ButtonBasics{
+        margin: 6rem auto;
+        margin-bottom: 0.1rem;
+    }
+}
