@@ -1,10 +1,12 @@
 import { useState } from 'react';
+import {useNavigate } from 'react-router-dom';
 
-import ResumeDownload from '../ResumeBuilder'
 import Logo from '../../Images/LogoFinal.jpg';
 import '../../Styles/LandingPage.css'
 
 function LandingPage() {
+
+  const Navigate = useNavigate();
 
   const [ Name , setName ] = useState();
   const [ Email , setEmail ] = useState();
@@ -16,46 +18,33 @@ function LandingPage() {
   const [ Skills , setSkills ] = useState();
   const [ Certifications , setCertifications ] = useState();
 
-  const [ Popup , setPopup ] = useState(false);
-  const [ Req , setReq ] = useState(true)
-
   const Required = () =>{
     if( Name === undefined || Email === undefined || Mobile === undefined ||
       Dob === undefined || Gender === undefined || Address === undefined || Education === undefined ||
       Skills === undefined || Certifications === undefined){
-        setReq(false);
         alert("Incomplete Form");
       }
-    else{setPopup(true);}
-  }
-
-  if(Popup){
-    document.body.style.overflowY = "hidden";
-  }
-  else{
-    document.body.style.overflowY = "scroll";
+    else{
+      Navigate('/ResumeDownload' ,
+        {
+          state:{
+          Name:Name,
+          Email:Email,
+          Mobile:Mobile,
+          Dob:Dob,
+          Gender:Gender,
+          Address:Address,
+          Education:Education,
+          Skills:Skills,
+          Certifications:Certifications
+        }}
+      )
+    }
   }
 
   return (
     <>
       <div className="LandingPage_MainDiv">
-        {
-          (Popup)?
-          <ResumeDownload 
-            open={Popup} onClose={() => {setPopup(false)}} 
-            Name={Name}
-            Email={Email}
-            Mobile={Mobile}
-            Dob={Dob}
-            Gender={Gender}
-            Address={Address}
-            Education={Education}
-            Skills={Skills}
-            Certifications={Certifications}
-            Req={Req}
-          ></ResumeDownload>
-          :<></>
-        }
         <div className="TextAlignments">
             <p className="fontBasics Title2">Craft your perfect career @ Encored to professional success!</p>
         </div>
