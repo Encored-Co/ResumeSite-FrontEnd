@@ -42,14 +42,23 @@ function ResumeBuilder(){
     return(
         <>
             <div className="LandingPage_MainDiv">
+                <div className="TextAlignments">
+                    <p className="fontBasics Title2">Craft your perfect career @ Encored to professional success!</p>
+                </div>
                 <div className="row">
-                    <div className="FormSide-RP FormText column-Rp">
-                        <div className="FitWidth enco">
-                            <img src={Logo} className='Logo-Rp' alt="Encored Logo"/>
-                        </div>
+                    <div className="column InfoSide">
                         <div className="TextAlignments FitWidth">
+                            <p className="fontBasics Title3">Welcome to</p>
                             <p className="fontBasics Title1">Encored</p>
                         </div>
+                        <div className="FitWidth enco">
+                            <img src={Logo} alt="Encored Logo"/>
+                        </div>
+                        <div className="InfoButtonDiv">
+                            <a href='https://www.encored.in' target='blank' className="LearnMore" name="Learn" id="LearnMore">Learn More</a>
+                        </div>
+                    </div>
+                    <div className="FormSide FormText column">
                         <div className="container" ref={printRef}>
                             <div className="top">
                                 <div className="ImgCol">
