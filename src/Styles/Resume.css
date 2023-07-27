@@ -1,21 +1,28 @@
-.intextfont{
+.ResumeBg{
     font-family: sans-serif;
     padding: 16px;
     text-align: left;
     color: black;
-}
-
-.PopupResumeBg{
     background-color: white;
     border-radius: 32px;
     margin: 0 auto;
     min-height: 70vh;
+    clear: both;
+}
+
+.Clear{
+    clear: both;
 }
 
 .Cen{
     text-align: center;
     padding-bottom: 16px;
     max-width: 100%;
+}
+
+.Profile{
+    height: 90px;
+    width: 90px;
 }
 
 .NameDiv{

@@ -1,0 +1,140 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    max-width: 600px;
+    min-height: 230mm;
+    margin: auto;
+    background-color: white;
+    font-family: 'Lexend', sans-serif;
+}
+
+.top {
+    display: flex;
+    padding: 10mm  0;
+}
+
+.ImgCol{
+    flex: 40%;
+    width: 40%;
+}
+
+.EmpCol{
+    flex: 60%;
+    width: 60%;
+}
+
+.bottom {
+    flex: 1;
+    box-sizing: border-box;
+    padding: 0.5rem;
+}
+
+.enco1 {
+    text-align: right;
+    width: 100%;
+}
+
+.encoalign{
+    width: 100%;
+    min-height: 100%;
+    float: left;
+}
+
+.SplSpace{
+    padding-right: 0.2rem;
+}
+
+.img1 {
+    width: 90%;
+    height: 95%;
+    float: right;
+}
+
+.empname {
+    width: 90%;
+    float: right;
+}
+
+.div21{
+    width: 50%;
+    float: left;
+}
+
+.reducer{
+    margin: 0;
+}
+
+.div22{
+    width: 50%;
+    float: right;
+}
+
+.profilealign{
+    text-align: center;
+    padding: auto 0.5rem;
+}
+
+.linehg{
+    font-size: 0.8rem;
+}
+
+.profilesz{
+    font-size: 0.6rem;
+}
+
+.profilesize{
+    font-size: 0.8rem;
+    margin-bottom:0.1rem;
+    padding-bottom: 0;
+}
+
+.linespace{
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+}
+
+.linespacename{
+    font-size: 1rem;
+}
+
+.boxes{
+    background-color: #545454;
+    border-style: solid;
+    border-color: #545454;
+    color: white;
+    text-align: left;
+    min-height: 8rem;
+    padding-left: 0.5rem;
+}
+
+.spacepad{
+    padding-left: 1rem;
+    margin: 0.4rem auto;
+}
+
+.MobileView{
+    display: none;
+}
+
+.centerer{
+    font-family: sans-serif;
+    width: 100%;
+    text-align: center;
+}
+
+@media only screen and (max-width: 540px) {
+    .Logo-MV{
+        width: 80%;
+        height: 80%;
+    }
+    .TitleMv{
+        font-family: sans-serif;
+        font-size: 4rem;
+    }
+    .img1{
+        height: 95%;
+        width: 90%;
+    }
+}
