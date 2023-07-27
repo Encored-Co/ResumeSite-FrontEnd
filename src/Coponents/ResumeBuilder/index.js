@@ -1,12 +1,10 @@
-import { useRef , useEffect } from 'react';
+import { useRef , useEffect , useState } from 'react';
 import { useNavigate , useLocation } from 'react-router-dom';
 
 import { savePDF } from '@progress/kendo-react-pdf';
 
 import Logo from '../../Images/LogoFinal.jpg';
 import '../../Styles/LandingPage.css'
-import '../../Styles/Popup.css';
-import '../../Styles/Resume.css';
 import '../../Styles/Designed_Resume.css'
 
 import { FaPhoneAlt } from 'react-icons/fa';
@@ -19,9 +17,31 @@ function ResumeBuilder(){
     const Navigate = useNavigate();
     const printRef = useRef();
 
-    const downloadPdfDocument = async () => {
+    const [ Display , setDisplay ] = useState({display:"block"})
+    const [ Print , setPrint ] = useState(false);
+
+    const Adw = () =>{
+        console.log(Display)
         savePDF(printRef.current, { paperSize:  "A4" , fileName:`${Location.state.Name} Encored Resume`});
+    }
+
+    const downloadPdfDocument = async () => {
+        if(Display.display === "none"){
+            setDisplay({display:"block",width:"600px"});
+            setPrint(true);
+        }
+        else{
+            savePDF(printRef.current, { paperSize:  "A4" , fileName:`${Location.state.Name} Encored Resume`});
+        }
     };
+
+    useEffect(()=>{
+        if(Display.display === "block" && Print){
+            console.log(Display)
+            savePDF(printRef.current, { paperSize:  "A4" , fileName:`${Location.state.Name} Encored Resume`});
+            setDisplay({display:"none"})
+        }
+    },[Display])
 
     const getBase64 = (file) => {
         return new Promise((resolve,reject) => {
@@ -33,9 +53,14 @@ function ResumeBuilder(){
       }
 
     useEffect(()=>{
+        if(window.innerWidth < 540){
+            setDisplay({display:"none"})
+        }
+        else{
+            setDisplay({display:"block"})
+        }
         getBase64(Location.state.File).then(base64 => {
             Location.state.FileUrl = base64;
-            console.debug("file stored",base64);
           });
     },[])
 
@@ -58,16 +83,16 @@ function ResumeBuilder(){
                             <a href='https://www.encored.in' target='blank' className="LearnMore" name="Learn" id="LearnMore">Learn More</a>
                         </div>
                     </div>
-                    <div className="FormSide FormText column">
-                        <div className="container" ref={printRef}>
+                    <div className="FormSide-Rp FormText column-Rp">
+                        <div className="container" style={Display} ref={printRef}>
                             <div className="top">
                                 <div className="ImgCol">
                                     <img className='img1' alt="enco" src={Location.state.FileUrl}/>
                                 </div>
                                 <div className="EmpCol">
-                                    <div className="profilealign linehg" id="profilename">
-                                        <p id="name" className="linespacename linespace">{Location.state.Name}</p>
-                                        <p id="profiles" className="profilesize">{Location.state.Profession}</p>
+                                    <div className="profilealign linehg NameDiv" id="profilename">
+                                        <p id="name" className="MainName">{Location.state.Name}</p>
+                                        <p id="profiles" className="MainProf">{Location.state.Profession}</p>
                                     </div>
 
                                     <div className="boxes">
@@ -102,10 +127,9 @@ function ResumeBuilder(){
                                             Location.state.Education.map((key)=>{
                                                 return(
                                                     <>
-                                                    <p id="profiles" className="profilesize" key={key.Major}>{key.Major}</p>
+                                                    <p id="profiles" className="profilesize" key={key.Major}><b>{key.Major}</b></p>
                                                     <p id="profiles" className="profilesize" key={key.Ins}>{key.Ins}</p>
                                                     <p id="profiles" className="profilesize" key={key.Loc}>{key.Loc}</p>
-                                                    <br/>
                                                     </>
                                                 )
                                             })
@@ -119,10 +143,9 @@ function ResumeBuilder(){
                                             Location.state.Work.map((key)=>{
                                                 return(
                                                     <>
-                                                    <p id="profiles" className="profilesize" key={key.Pos}>{key.Pos}</p>
+                                                    <p id="profiles" className="profilesize" key={key.Pos}><b>{key.Pos}</b></p>
                                                     <p id="profiles" className="profilesize" key={key.Cmp}>{key.Cmp}</p>
                                                     <p id="profiles" className="profilesize" key={key.Loc}>{key.Loc}</p>
-                                                    <br/>
                                                     </>
                                                 )
                                             })
@@ -131,30 +154,33 @@ function ResumeBuilder(){
                                 </div>
                             </div>
                         </div>
-                        <p className='fontBasics'>* This is just a preview. Download to see exact results.</p>
-                        <div>
-                            <button className="Navigator FloatL" name="Generate" onClick={()=>{
-                                Navigate("/",{
-                                    state:{
-                                        Name:Location.state.Name,
-                                        Email:Location.state.Email,
-                                        Mobile:Location.state.Mobile,
-                                        Summary:Location.state.Summary,
-                                        Address:Location.state.Address,
-                                        Profession:Location.state.Profession,
-                                        Education:Location.state.Education,
-                                        Work:Location.state.Work,
-                                        Skills:Location.state.Skills,
-                                        File:Location.state.File,
-                                        FileUrl:Location.state.FileUrl
-                                    }
-                                })
-                            }} id="Generate"><i className="fa-solid fa-circle-chevron-left NaviIcon"></i>Back</button>
-                        </div>
-                        <div>
-                            <button className="Navigator FloatR" onClick={()=>{downloadPdfDocument()}}>Download <i className="fa-solid fa-arrow-down NaviIcon"></i></button>
-                        </div>
-                        <div className='Clear'></div>                        
+                        <div >
+                            <p className='fontBasics m245'>*This is just a preview. Download to see results.</p>
+                            <p className='fontBasics War centerer mv'>Your Resume is Ready</p>
+                            <div>
+                                <button className="Navigator FloatL" name="Generate" onClick={()=>{
+                                    Navigate("/",{
+                                        state:{
+                                            Name:Location.state.Name,
+                                            Email:Location.state.Email,
+                                            Mobile:Location.state.Mobile,
+                                            Summary:Location.state.Summary,
+                                            Address:Location.state.Address,
+                                            Profession:Location.state.Profession,
+                                            Education:Location.state.Education,
+                                            Work:Location.state.Work,
+                                            Skills:Location.state.Skills,
+                                            File:Location.state.File,
+                                            FileUrl:Location.state.FileUrl
+                                        }
+                                    })
+                                }} id="Generate"><i className="fa-solid fa-circle-chevron-left NaviIcon"></i>Back</button>
+                            </div>
+                            <div>
+                                <button className="Navigator FloatR" onClick={()=>{downloadPdfDocument()}}>Download <i className="fa-solid fa-arrow-down NaviIcon"></i></button>
+                            </div>
+                            <div className='Clear'></div>
+                        </div>                        
                     </div>
                 </div>
             </div>

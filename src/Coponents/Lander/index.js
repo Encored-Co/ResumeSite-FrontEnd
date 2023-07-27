@@ -38,12 +38,14 @@ function LandingPage() {
     setEducation((current) =>
       current.filter((Education) => Education.Major !== Maj)
     );
+    setEduCount(EduCount-1)
   }
 
   const DeleteWrk = (Maj) =>{
     setWork((current) =>
       current.filter((Work) => Work.Pos !== Maj)
     );
+    setWorkCount(WorkCount-1)
   }
 
   const Required1 = () =>{

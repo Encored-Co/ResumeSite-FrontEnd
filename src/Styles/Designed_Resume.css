@@ -3,15 +3,17 @@
     flex-direction: column;
     width: fit-content;
     max-width: 600px;
-    min-height: 230mm;
+    min-height: 842px;
     margin: auto;
     background-color: white;
-    font-family: 'Lexend', sans-serif;
+    font-family: sans-serif;
+    background-color: #d9d9d9;
 }
 
 .top {
     display: flex;
-    padding: 10mm  0;
+    padding: 0.5rem;
+    padding-right: 0;
 }
 
 .ImgCol{
@@ -22,6 +24,7 @@
 .EmpCol{
     flex: 60%;
     width: 60%;
+    text-align: center;
 }
 
 .bottom {
@@ -85,8 +88,22 @@
 
 .profilesize{
     font-size: 0.8rem;
-    margin-bottom:0.1rem;
     padding-bottom: 0;
+    text-transform: capitalize;
+}
+
+.MainName{
+    font-size: 1rem;
+    margin: 0;
+}
+
+.MainProf{
+    font-size: 0.8;
+    margin: 0;
+}
+
+.NameDiv{
+    text-align: center;
 }
 
 .linespace{
@@ -97,6 +114,9 @@
 
 .linespacename{
     font-size: 1rem;
+    margin: 0;
+    width: 100%;
+    text-align: center;
 }
 
 .boxes{
@@ -110,7 +130,6 @@
 }
 
 .spacepad{
-    padding-left: 1rem;
     margin: 0.4rem auto;
 }
 
@@ -120,8 +139,15 @@
 
 .centerer{
     font-family: sans-serif;
-    width: 100%;
     text-align: center;
+}
+
+.bottom{
+    padding: 1rem;
+}
+
+.mv{
+    display: none;
 }
 
 @media only screen and (max-width: 540px) {
@@ -129,8 +155,14 @@
         width: 70%;
         height: 70%;
     }
+    .mv{
+        display: block;
+    }
     .img1{
         height: 95%;
         width: 90%;
+    }
+    .m245{
+        display: none;
     }
 }
