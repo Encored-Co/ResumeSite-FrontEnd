@@ -2,7 +2,7 @@ import { useState , useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 import Logo from '../../Images/LogoFinal.jpg';
-import '../../Styles/LandingPage.css'
+import '../../Styles/LandingPage.css';
 
 function LandingPage() {
 
