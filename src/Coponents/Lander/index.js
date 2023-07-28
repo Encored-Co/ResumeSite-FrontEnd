@@ -7,6 +7,7 @@ import '../../Styles/LandingPage.css';
 function LandingPage() {
 
   const Navigate = useNavigate();
+  
   const Location = useLocation();
 
   const [ Stage , setStage ] = useState(0);
