@@ -20,11 +20,6 @@ function ResumeBuilder(){
     const [ Display , setDisplay ] = useState({display:"block"})
     const [ Print , setPrint ] = useState(false);
 
-    const Adw = () =>{
-        console.log(Display)
-        savePDF(printRef.current, { paperSize:  "A4" , fileName:`${Location.state.Name} Encored Resume`});
-    }
-
     const downloadPdfDocument = async () => {
         if(Display.display === "none"){
             setDisplay({display:"block",width:"600px"});
@@ -90,29 +85,29 @@ function ResumeBuilder(){
                                     <img className='img1' alt="enco" src={Location.state.FileUrl}/>
                                 </div>
                                 <div className="EmpCol">
-                                    <div className="profilealign linehg NameDiv" id="profilename">
+                                    <div className="profilealign" id="profilename">
                                         <p id="name" className="MainName">{Location.state.Name}</p>
                                         <p id="profiles" className="MainProf">{Location.state.Profession}</p>
                                     </div>
 
-                                    <div className="boxes">
-                                        <p className="linespace linespace" id="profile"><b>PROFILE</b></p>
-                                        <p id="profiles" className="profilesz PadProf">{Location.state.Summary}</p>
+                                    <div className="summary">
+                                        <p className="linespace" id="profile"><b>PROFILE</b></p>
+                                        <p id="profiles" className="profilesz">{Location.state.Summary}</p>
                                     </div>
                                     <div className='Clear'></div>
                                 </div>
                             </div>
                             <div className="bottom">
-                                <div className="div21">
+                                <div className="bottomleft">
                                     <div>
-                                        <p id="name" className="linespace spacepad"><b>CONTACT</b></p>
+                                        <p id="name" className="linespace"><b>CONTACT</b></p>
                                         <p id="profiles" className="profilesize"> <FaPhoneAlt className='SplSpace'/>{Location.state.Mobile}</p>
                                         <p id="profiles" className="profilesize"> <GrMail className='SplSpace'/>{Location.state.Email}</p>
                                         <p id="profiles" className="profilesize"> <FaLocationPin className="SplSpace"/>{Location.state.Address}</p>
                                     </div>
                                     <div>
-                                        <p id="name" className="linespace spacepad"><b>SKILLS</b></p>
-                                        <ul id="profiles" className="profilesize reducer">
+                                        <p id="name" className="linespace"><b>SKILLS</b></p>
+                                        <ul id="profiles" className="profilesize">
                                             {
                                                 Location.state.Skills.trim().split(' ').map((key)=>{
                                                     return(
@@ -122,7 +117,7 @@ function ResumeBuilder(){
                                         </ul>
                                     </div>
                                     <div>
-                                        <p id="name" className="linespace spacepad"><b>EDUCATION</b></p>
+                                        <p id="name" className="linespace"><b>EDUCATION</b></p>
                                         {
                                             Location.state.Education.map((key)=>{
                                                 return(
@@ -136,9 +131,9 @@ function ResumeBuilder(){
                                         }
                                     </div>
                                 </div>
-                                <div className="div22">
+                                <div className="bottomright">
                                     <div>
-                                        <p id="name" className="linespace spacepad"><b>WORK EXPERIENCE</b></p>
+                                        <p id="name" className="linespace"><b>WORK EXPERIENCE</b></p>
                                         {
                                             Location.state.Work.map((key)=>{
                                                 return(

@@ -1,13 +1,13 @@
 .container {
     display: flex;
     flex-direction: column;
-    width: fit-content;
     max-width: 600px;
     min-height: 842px;
     margin: auto;
     background-color: white;
     font-family: sans-serif;
     background-color: #d9d9d9;
+    padding-top: 1rem;
 }
 
 .top {
@@ -17,13 +17,13 @@
 }
 
 .ImgCol{
-    flex: 40%;
-    width: 40%;
+    flex: 30%;
+    width: 30%;
 }
 
 .EmpCol{
-    flex: 60%;
-    width: 60%;
+    flex: 70%;
+    width: 70%;
     text-align: center;
 }
 
@@ -49,8 +49,8 @@
 }
 
 .img1 {
-    width: 90%;
-    height: 95%;
+    width: 155px;
+    height: 180px;
     float: right;
 }
 
@@ -59,16 +59,12 @@
     float: right;
 }
 
-.div21{
+.bottomleft{
     width: 50%;
     float: left;
 }
 
-.reducer{
-    margin: 0;
-}
-
-.div22{
+.bottomright{
     width: 50%;
     float: right;
 }
@@ -76,9 +72,6 @@
 .profilealign{
     text-align: center;
     padding: auto 0.5rem;
-}
-
-.linehg{
     font-size: 0.8rem;
 }
 
@@ -93,33 +86,34 @@
 }
 
 .MainName{
+    font-weight: bold;
+    text-transform: uppercase;
     font-size: 1rem;
     margin: 0;
 }
 
 .MainProf{
+    font-weight: bold;
+    text-transform: uppercase;
     font-size: 0.8;
     margin: 0;
-}
-
-.NameDiv{
-    text-align: center;
 }
 
 .linespace{
     font-size: 1rem;
     text-transform: uppercase;
     letter-spacing: 3px;
+    margin: 0.4rem auto;
 }
 
-.linespacename{
+.titlesize{
     font-size: 1rem;
     margin: 0;
     width: 100%;
     text-align: center;
 }
 
-.boxes{
+.summary{
     background-color: #545454;
     border-style: solid;
     border-color: #545454;
@@ -127,10 +121,6 @@
     text-align: left;
     min-height: 8rem;
     padding-left: 0.5rem;
-}
-
-.spacepad{
-    margin: 0.4rem auto;
 }
 
 .MobileView{
