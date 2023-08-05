@@ -1,15 +1,16 @@
 import { useRef , useEffect , useState } from 'react';
 import { useNavigate , useLocation } from 'react-router-dom';
+import Axios from 'axios';
 
 import { savePDF } from '@progress/kendo-react-pdf';
 
 import Logo from '../../Images/LogoFinal.jpg';
-import '../../Styles/LandingPage.css'
-import '../../Styles/Designed_Resume.css'
+import '../../Styles/LandingPage.css';
+import '../../Styles/Designed_Resume.css';
 
 import { FaPhoneAlt } from 'react-icons/fa';
-import { FaLocationPin } from 'react-icons/fa6'
-import { GrMail } from 'react-icons/gr'
+import { FaLocationPin } from 'react-icons/fa6';
+import { GrMail } from 'react-icons/gr';
 
 function ResumeBuilder(){
 
@@ -19,6 +20,7 @@ function ResumeBuilder(){
 
     const [ Display , setDisplay ] = useState({display:"block"})
     const [ Print , setPrint ] = useState(false);
+    const [ GptScore , setGptScore ] = useState();
 
     const Adw = () =>{
         console.log(Display)
@@ -53,6 +55,25 @@ function ResumeBuilder(){
       }
 
     useEffect(()=>{
+        Axios.put("http://localhost:3001/PutQuerry" , {Question:`
+        Photo of ${Location.state.Name}
+        name: ${Location.state.Name}
+        mobile: ${Location.state.Mobile}
+        email: ${Location.state.Email}
+        address: ${Location.state.Address}
+        
+        summary: ${Location.state.Summary}
+        
+        skills: ${Location.state.Skills}
+        
+        Education: ${Location.state.Education} 
+        
+        Work Experience: ${Location.state.Work}
+        
+        ANALYSE AND RUN A DIFFUCULT RATING OF CANDIDATE RATE OUT OF 10 WITH OVERALL RATING , MAKE THE EVALUVATION STRICT  ON EACH ASPECT BASED ON THIS INFO
+        `}).then((response)=>{
+            setGptScore(response.data)
+        })
         if(window.innerWidth < 540){
             setDisplay({display:"none"})
         }
@@ -180,6 +201,9 @@ function ResumeBuilder(){
                                 <button className="Navigator FloatR" onClick={()=>{downloadPdfDocument()}}>Download <i className="fa-solid fa-arrow-down NaviIcon"></i></button>
                             </div>
                             <div className='Clear'></div>
+                            {(GptScore !== undefined)?
+                            <p className='fontBasics'>{GptScore}</p>
+                            :<></>}
                         </div>                        
                     </div>
                 </div>
