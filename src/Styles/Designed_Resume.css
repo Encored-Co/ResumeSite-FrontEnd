@@ -49,7 +49,7 @@
 }
 
 .img1 {
-    width: 155px;
+    width: 154px;
     height: 180px;
     float: right;
 }
@@ -123,17 +123,73 @@
     padding-left: 0.5rem;
 }
 
-.MobileView{
-    display: none;
-}
-
 .centerer{
     font-family: sans-serif;
     text-align: center;
 }
 
+.mainheader{
+    color: goldenrod;
+    text-align: center;
+    font-size: large;
+}
+
+.AIresume{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-bottom: 0.75rem;
+}
+
+.Chatgptcol{
+    width: 50%;
+    color: goldenrod;
+    font-size: large;
+}
+
+.chatgptborder{
+    border-radius: 25px;
+    margin: auto;
+    width: 85%;
+    background-color: #1e1e1e;
+    border: #1e1e1e;
+    padding: 10px;
+    text-align: center;
+    min-height: 842px;
+}
+
+.resumecol{
+    width: 50%;
+    padding: 0;
+}
+
+.navigation_col{
+    margin: 0.75rem;
+    display: flex;
+    padding: 1rem;
+}
+
+.navigation_col1{
+    display: inline-block;
+    flex: 50%;
+    width: 50%;
+    text-align: center;
+}
+
+.navigation_col2{
+    display: inline-block;
+    flex: 50%;
+    width: 50%;
+    text-align: center;
+}
+
+
 .bottom{
     padding: 1rem;
+}
+
+.MobileView {
+    display: none;
 }
 
 .mv{
@@ -154,5 +210,12 @@
     }
     .m245{
         display: none;
+    }
+    .Chatgptcol {
+        width: 100%;
+        color: goldenrod;
+    }
+    .chatgptborder{
+        height: auto;
     }
 }

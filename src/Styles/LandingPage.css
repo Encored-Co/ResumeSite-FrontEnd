@@ -142,15 +142,6 @@ h2{
     margin: 0.75rem;
 }
 
-.FloatR{
-    float: right;
-    margin: 1rem auto;
-}
-
-.FloatL{
-    float: left;
-    margin: 1rem auto;
-}
 
 .NaviIcon{
     margin: auto 0.5rem;
@@ -268,5 +259,8 @@ h2{
     }
     .Generate{
         font-size: large;
+    }
+    .Navigator{
+        min-width: 80%;
     }
 }
