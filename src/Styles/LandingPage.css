@@ -115,7 +115,7 @@ h2{
     text-align: center;
 }
 
-.Navigator{
+.Navigator , .Navigator-R{
     font-size: 1.2rem;
     border: none;
     outline: none;
@@ -198,6 +198,14 @@ h2{
     display: inline;
 }
 
+.FloatL{
+    float: left;
+}
+
+.FloatR{
+    float: right;
+}
+
 @media only screen and (max-width: 540px) {
     .enco{
         height: 20%;
@@ -260,7 +268,7 @@ h2{
     .Generate{
         font-size: large;
     }
-    .Navigator{
+    .Navigator-R{
         min-width: 80%;
     }
 }

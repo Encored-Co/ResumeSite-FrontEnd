@@ -216,6 +216,6 @@
         color: goldenrod;
     }
     .chatgptborder{
-        height: auto;
+        min-height: auto;
     }
 }
