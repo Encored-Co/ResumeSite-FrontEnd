@@ -105,7 +105,6 @@ h2{
 .IconBasics{
     font-size: 1.2rem;
     padding-right: 0.5rem;
-    max-height: fit-content;
     margin-bottom: 0;
     padding-bottom: 0;
     line-height: 0.1rem;
@@ -116,7 +115,7 @@ h2{
     text-align: center;
 }
 
-.Navigator{
+.Navigator , .Navigator-R{
     font-size: 1.2rem;
     border: none;
     outline: none;
@@ -143,15 +142,6 @@ h2{
     margin: 0.75rem;
 }
 
-.FloatR{
-    float: right;
-    margin: 1rem auto;
-}
-
-.FloatL{
-    float: left;
-    margin: 1rem auto;
-}
 
 .NaviIcon{
     margin: auto 0.5rem;
@@ -206,6 +196,14 @@ h2{
 
 .BaseInputName , .BaseInputIcon , .Photo_File_Name{
     display: inline;
+}
+
+.FloatL{
+    float: left;
+}
+
+.FloatR{
+    float: right;
 }
 
 @media only screen and (max-width: 540px) {
@@ -269,5 +267,8 @@ h2{
     }
     .Generate{
         font-size: large;
+    }
+    .Navigator-R{
+        min-width: 80%;
     }
 }
