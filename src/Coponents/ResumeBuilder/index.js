@@ -47,8 +47,7 @@ function ResumeBuilder(){
            reader.readAsDataURL(file);
         });
       }
-
-    /*
+      
     const EducationData = Location.state.Education.reduce((result, item) => {
         return `${result}Major:${item.Major},Institution:${item.Ins},Time:${item.Loc}|`
     }, "")
@@ -56,10 +55,8 @@ function ResumeBuilder(){
     const WorkData = Location.state.Work.reduce((result, item) => {
         return `${result}Position:${item.Pos},Organization:${item.Cmp},Time:${item.Loc}|`
     }, "")
-    */
 
     useEffect(()=>{
-        /*
         setLoader(true);
         Axios.put("https://kind-pink-duckling-tie.cyclic.app/PutQuerry" , {Question:`
         Photo of ${Location.state.Name}
@@ -81,7 +78,6 @@ function ResumeBuilder(){
             setGptScore(response.data);
             setLoader(false)
         })
-        */
         if(window.innerWidth < 540){
             setDisplay({display:"none"})
         }
