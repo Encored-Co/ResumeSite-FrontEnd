@@ -41,12 +41,12 @@ function ResumeBuilder(){
 
     const getBase64 = (file) => {
         return new Promise((resolve,reject) => {
-           const reader = new FileReader();
-           reader.onload = () => resolve(reader.result);
-           reader.onerror = error => reject(error);
-           reader.readAsDataURL(file);
+            const reader = new FileReader();
+            reader.onload = () => resolve(reader.result);
+            reader.onerror = error => reject(error);
+            reader.readAsDataURL(file);
         });
-      }
+    }
       
     const EducationData = Location.state.Education.reduce((result, item) => {
         return `${result}Major:${item.Major},Institution:${item.Ins},Time:${item.Loc}|`

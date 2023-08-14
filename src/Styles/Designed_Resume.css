@@ -141,13 +141,22 @@
     margin-bottom: 0.75rem;
 }
 
+.chatgptborder-F{
+    min-height: 80vh;
+}
+
 .Chatgptcol{
     width: 50%;
     color: goldenrod;
     font-size: large;
 }
 
-.chatgptborder{
+.Chatgptcol-F{
+    color: goldenrod;
+    font-size: large;
+}
+
+.chatgptborder , .chatgptborder-F{
     border-radius: 25px;
     margin: auto;
     width: 85%;
@@ -155,6 +164,9 @@
     border: #1e1e1e;
     padding: 10px;
     text-align: center;
+}
+
+.chatgptborder{
     min-height: 842px;
 }
 
@@ -167,6 +179,12 @@
     margin: 0.75rem;
     display: flex;
     padding: 1rem;
+}
+
+.navigationcol-F{
+    text-align: center;
+    margin: auto 1rem;
+    padding: auto 1rem;
 }
 
 .navigation_col1{
@@ -183,6 +201,9 @@
     text-align: center;
 }
 
+.Navigator-F{
+    min-width: 50%;
+}
 
 .bottom{
     padding: 1rem;
