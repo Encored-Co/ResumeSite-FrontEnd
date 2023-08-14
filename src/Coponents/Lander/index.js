@@ -1,8 +1,11 @@
 import { useState , useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
+import pdfjs from 'pdfjs-dist';
+import Loader from '../Loader/index'
 
 import Logo from '../../Images/LogoFinal.jpg';
 import '../../Styles/LandingPage.css';
+import Axios from 'axios';
 
 function LandingPage() {
 
@@ -11,6 +14,7 @@ function LandingPage() {
   const Location = useLocation();
 
   const [ Stage , setStage ] = useState(0);
+  const [ Loading , setLoading ] = useState(false);
 
   const [ Name , setName ] = useState();
   const [ Email , setEmail ] = useState();
@@ -21,6 +25,9 @@ function LandingPage() {
   const [ Summary , setSummary ] = useState();
   const [ File , setFile ] = useState();
   const [ FileUrl , setFileUrl ] = useState();
+
+  const [items, setItems] = useState([]);
+  const [ pdfText, setPdfText ] = useState('');
 
   const [ EduCount , setEduCount ] = useState(1);
   const [ Education , setEducation ] = useState([]);
@@ -34,6 +41,26 @@ function LandingPage() {
   const [ Text4 , setText4 ] = useState();
   const [ Text5 , setText5 ] = useState();
   const [ Text6 , setText6 ] = useState();
+
+  const getBase64 = (file) => {
+    return new Promise((resolve,reject) => {
+        const reader = new FileReader();
+        reader.onload = () => resolve(reader.result);
+        reader.onerror = error => reject(error);
+        reader.readAsDataURL(file);
+    });
+  }
+
+  const AiReview = (e) =>{
+    setLoading(true)
+    getBase64(e.target.files[0]).then((base64)=>{
+      Axios.put('https://kind-pink-duckling-tie.cyclic.app/SaveFile' , {File:base64}).then((response)=>{
+        console.log(response.data)
+        setLoading(false);
+        Navigate("/ResumeReview",{state:{Report:response.data}})
+      })
+    })
+  }
 
   const DeleteEdu = (Maj) =>{
     setEducation((current) =>
@@ -159,6 +186,8 @@ function LandingPage() {
 
   return (
     <>
+    {(Loading)?<Loader/>:
+    <>
       <div className="LandingPage_MainDiv">
         <div className="TextAlignments">
             <p className="fontBasics Title2">Craft your perfect career @ Encored to professional success!</p>
@@ -177,6 +206,20 @@ function LandingPage() {
                 </div>
             </div>
             <div className="FormSide FormText column">
+              <div className='ReviewButton'>
+                <label className='BaseInputLable RevMar'>
+                  <div className='BaseInputName'>
+                    {
+                      <div className='BaseInputIcon'>
+                        Already have a resume ?
+                      </div>
+                    }
+                  </div>
+                  <input id='InputTag' type='file' accept="application/pdf" onChange={(e)=>{
+                      AiReview(e)
+                    }} required ></input>
+                </label>
+              </div>
               {
                 (Stage === 0)?
                 <div className="main">
@@ -363,7 +406,7 @@ function LandingPage() {
             </div>
         </div>
     </div>
-  </>
+  </>}</>
   );
 }
 
