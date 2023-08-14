@@ -45,7 +45,7 @@ function LandingPage() {
     const FileReference = ref(storage , `Temp_PDF_Files/${e.target.files[0].name}`);
         uploadBytes(FileReference , e.target.files[0]).then((FileData) => {
             getDownloadURL(FileData.ref).then((url) => {
-              Axios.put('http://localhost:3001/SaveFile' , {File:url}).then((response)=>{
+              Axios.put('https://kind-pink-duckling-tie.cyclic.app/SaveFile' , {File:url}).then((response)=>{
                 console.log(response.data)
                 const storage = getStorage();
                 const desertRef = ref(storage, `Temp_Files/${e.target.files[0].name}`);
