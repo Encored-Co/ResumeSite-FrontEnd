@@ -115,7 +115,7 @@ h2{
     text-align: center;
 }
 
-.Navigator , .Navigator-R{
+.Navigator , .Navigator-R , .Navigator-F{
     font-size: 1.2rem;
     border: none;
     outline: none;
@@ -206,6 +206,21 @@ h2{
     float: right;
 }
 
+.ReviewButton{
+    background-color: #a7791c;
+    color: black;
+    text-align: center;
+    font-family: sans-serif;
+    border-radius: 2rem;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    padding: 0.75rem;
+}
+
+.RevMar{
+    margin: 1rem;
+}
+
 @media only screen and (max-width: 540px) {
     .enco{
         height: 20%;
@@ -270,5 +285,11 @@ h2{
     }
     .Navigator-R{
         min-width: 80%;
+    }
+    .Navigator-F{
+        width:100%;
+    }
+    .ReviewButton{
+        margin-top: 1rem;
     }
 }
