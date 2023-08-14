@@ -1,6 +1,7 @@
 import { useState , useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import pdfjs from 'pdfjs-dist';
+import { ref , uploadBytes , getDownloadURL, getStorage, deleteObject } from 'firebase/storage';
+import { storage } from '../../cloud';
 import Loader from '../Loader/index'
 
 import Logo from '../../Images/LogoFinal.jpg';
@@ -26,9 +27,6 @@ function LandingPage() {
   const [ File , setFile ] = useState();
   const [ FileUrl , setFileUrl ] = useState();
 
-  const [items, setItems] = useState([]);
-  const [ pdfText, setPdfText ] = useState('');
-
   const [ EduCount , setEduCount ] = useState(1);
   const [ Education , setEducation ] = useState([]);
 
@@ -42,24 +40,24 @@ function LandingPage() {
   const [ Text5 , setText5 ] = useState();
   const [ Text6 , setText6 ] = useState();
 
-  const getBase64 = (file) => {
-    return new Promise((resolve,reject) => {
-        const reader = new FileReader();
-        reader.onload = () => resolve(reader.result);
-        reader.onerror = error => reject(error);
-        reader.readAsDataURL(file);
-    });
-  }
-
   const AiReview = (e) =>{
     setLoading(true)
-    getBase64(e.target.files[0]).then((base64)=>{
-      Axios.put('https://kind-pink-duckling-tie.cyclic.app/SaveFile' , {File:base64}).then((response)=>{
-        console.log(response.data)
-        setLoading(false);
-        Navigate("/ResumeReview",{state:{Report:response.data}})
-      })
-    })
+    const FileReference = ref(storage , `Temp_PDF_Files/${e.target.files[0].name}`);
+        uploadBytes(FileReference , e.target.files[0]).then((FileData) => {
+            getDownloadURL(FileData.ref).then((url) => {
+              Axios.put('http://localhost:3001/SaveFile' , {File:url}).then((response)=>{
+                console.log(response.data)
+                const storage = getStorage();
+                const desertRef = ref(storage, `Temp_Files/${e.target.files[0].name}`);
+                deleteObject(desertRef).then(() => {
+                }).catch((error) => {
+                  console.log("Deletion Error",error)
+                });
+                setLoading(false);
+                Navigate("/ResumeReview",{state:{Report:response.data}})
+              })
+            })
+        });
   }
 
   const DeleteEdu = (Maj) =>{
